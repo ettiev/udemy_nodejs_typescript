@@ -34,8 +34,7 @@ router.put("/todo/:todoId", (req, res, next) => {
     res.status(404).json({ message: "Could not find the requested todo!" });
 });
 router.delete("/todo/:todoId", (req, res, next) => {
-    const tid = req.params.todoId;
-    todos = todos.filter((todoItem) => { todoItem.id !== tid; });
+    todos = todos.filter(todoItem => todoItem.id !== req.params.todoId);
     res.status(200).json({
         message: "Deleted the todo",
         todos: todos
